@@ -63,11 +63,13 @@ input_Reader = csv.reader(input_CSV)
 try:
     for row in input_Reader:
 
-        row[0] = date_change(row[0])    # call 'date_change' from 'functions.py' file
-        print(row)
+        row[0] = date_change(row[0])    #call 'date_change' function
+
         #TODO: change names of states into shortcuts
-        row[3] = calculate_clicks(row[2],row[3])
+
+        row[3] = calculate_clicks(row[2],row[3])     #call 'calculate_clicks' function
         input_Rows.append(row)
+        print(row)
 
 except csv.Error as error:
     sys.exit('file {}, line {}: {}'.format(input_path, reader.line_num, error))

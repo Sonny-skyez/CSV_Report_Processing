@@ -1,5 +1,6 @@
 # file with functions used in Main.py
 
+
 def date_change(date):
 
     # this function will create a new date in expected output format;
@@ -15,4 +16,8 @@ def calculate_clicks(impress, CTR):
 
     # this function will calculate number of clicks
     # from CTR (Click To impression Rate)
-    clicks =
+    a = float(CTR[:-1])
+    b = float(impress)
+    clicks = b * (a/100)
+
+    return round(clicks, 2)
