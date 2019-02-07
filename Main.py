@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import os, csv, sys
+import chardet  # TODO: requirements!
 from functions import date_change
 
 
@@ -15,7 +16,7 @@ if len(os.listdir(input_DIR)) == 0:     # check if the 'Input' folder is empty:
 
 else:       # search for a .csv file in 'Input' folder
 
-    for search_file in os.listdir(input_DIR):
+    for search_file in os.listdir(input_DIR):   #TODO uwzglednij DC_store
 
         if not search_file.endswith('.csv'):
             continue
@@ -26,13 +27,17 @@ else:       # search for a .csv file in 'Input' folder
             break
 
 
-# read .csv file with csv Python module:
+# read .csv file with csv Python module,
+# and list rows in "input_Rows" list.
 
 input_Rows = []
-input_CSV = open(input_filename)
+input_CSV = open(input_filename)    #TODO: check if the file is UTF-8
 input_Reader = csv.reader(input_CSV)
 
 
 for row in input_Reader:
 
-    date = date_change(row[0])  # call 'date_change' from 'functions.py' file
+    row[0] = date_change(row[0])    # call 'date_change' from 'functions.py' file
+    print(row)
+    #TODO: change names of states into shortcuts
+    #TODO: change percent into clicks
