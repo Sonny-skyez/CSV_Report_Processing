@@ -6,23 +6,23 @@ from functions import date_change
 
 input_DIR = 'input'
 
-# if os.path.isfile()
+
 # search for a .csv file in 'Input' folder
 
 if len(os.listdir(input_DIR)) == 0:
 
-    sys.exit()
+    print('File not found'
+          'please try again')
 
-else:
 
-    for search_file in os.listdir(input_DIR):
+for search_file in os.listdir(input_DIR):
 
-        if not search_file.endswith('.csv'):
-            continue
+    if not search_file.endswith('.csv'):
+        continue
 
-        else:
-            input_filename = os.path.join(input_DIR, search_file)
-            break
+    else:
+        input_filename = os.path.join(input_DIR, search_file)
+        break
 
 
 # read .csv file with csv Python module:
