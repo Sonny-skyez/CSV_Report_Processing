@@ -7,26 +7,26 @@ from functions import date_change
 input_DIR = 'input'
 
 
-# search for a .csv file in 'Input' folder
+if len(os.listdir(input_DIR)) == 0:     # check if the 'Input' folder is empty:
 
-if len(os.listdir(input_DIR)) == 0:
+    sys.stderr.write('STDERR: Critical error occured. No .csv file was found in "Input" folder,\n'
+                     'copy input file in .csv format to this folder and try again.')
+    sys.exit()
 
-    print('File not found'
-          'please try again')
+else:       # search for a .csv file in 'Input' folder
 
+    for search_file in os.listdir(input_DIR):
 
-for search_file in os.listdir(input_DIR):
+        if not search_file.endswith('.csv'):
+            continue
 
-    if not search_file.endswith('.csv'):
-        continue
+        else:
 
-    else:
-        input_filename = os.path.join(input_DIR, search_file)
-        break
+            input_filename = os.path.join(input_DIR, search_file)
+            break
 
 
 # read .csv file with csv Python module:
-
 
 input_Rows = []
 input_CSV = open(input_filename)
