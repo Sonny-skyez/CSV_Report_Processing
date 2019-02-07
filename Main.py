@@ -2,15 +2,17 @@
 
 import os, sys, csv
 import chardet      #TODO: requirements: chardet-3.0.4
-from functions import date_change
+from functions import date_change, calculate_clicks
 
 
 input_DIR = 'input'
 list_DIR = os.listdir(input_DIR)
 
 
-# check if the 'Input' folder is empty
-# and is it containing hidden .DS_store files
+'''
+check if the 'Input' folder is empty
+and is it containing hidden .DS_store files
+'''
 
 if len(list_DIR) == 0 or (len(list_DIR) == 1 and '.DS_Store' in list_DIR):
 
@@ -43,17 +45,31 @@ if encoding['encoding'] == 'utf-8':
 
 else:
     sys.stderr.write('STDERR: Critical error. This script supports only utf-8 encoded files')
+    sys.exit()
 
-# read .csv file with csv Python module,
-# and list rows in "input_Rows" list.
-# input_Rows = []
-# input_CSV = open(input_path)
-# input_Reader = csv.reader(input_CSV)
-#
-#
-# for row in input_Reader:
-#
-#     row[0] = date_change(row[0])    # call 'date_change' from 'functions.py' file
-#     print(row)
-#     #TODO: change names of states into shortcuts
-#     #TODO: change percent into clicks
+
+'''
+Read .csv file with csv Python module
+make changes in rows to match output standard: 2019-01-21,AFG,919,6
+list rows in "input_Rows" list
+'''
+
+input_Rows = []
+
+
+input_CSV = open(input_path, newline='')
+input_Reader = csv.reader(input_CSV)
+
+try:
+    for row in input_Reader:
+
+        row[0] = date_change(row[0])    # call 'date_change' from 'functions.py' file
+        print(row)
+        #TODO: change names of states into shortcuts
+        row[3] = calculate_clicks(row[2],row[3])
+        input_Rows.append(row)
+
+except csv.Error as error:
+    sys.exit('file {}, line {}: {}'.format(input_path, reader.line_num, error))
+
+#TODO sort here! ---> input_Rows.sort()

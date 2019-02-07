@@ -11,3 +11,8 @@ def date_change(date):
     return new_date
 
 
+def calculate_clicks(impress, CTR):
+
+    # this function will calculate number of clicks
+    # from CTR (Click To impression Rate)
+    clicks =
