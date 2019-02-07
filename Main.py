@@ -1,19 +1,7 @@
 #!/usr/bin/env python
 
-# Main script file for CSV Report Processing
-
-# input_path = '/Users/chrisbrown/PycharmProjects/Internship/CSV_Report_Processing/input.csv'
-#
-# with open(input_path) as input:
-#
-#     for line in input:
-#
-#         print(line)
-
-
-# search for a .csv file in 'Input' folder
-
 import os, csv
+from .Functions.py import date_change
 
 
 input_DIR = 'input'
@@ -27,14 +15,16 @@ for search_file in os.listdir(input_DIR):
         continue
 
     else:
-        input_filename = search_file
+        input_filename = os.path.join(input_DIR, search_file)
         break
 
-print(input_filename)
 
 # read .csv file with csv Python module:
+
 
 input_Rows = []
 input_CSV = open(input_filename)
 input_Reader = csv.reader(input_CSV)
-for
+
+for row in input_Reader:
+    date_change(row[0])
