@@ -1,14 +1,15 @@
 # file with functions used in Main.py
 
-import pycountry    #TODO: requirements
+import pycountry, sys   #TODO: requirements
 
 
 def date_change(date):
 
     '''This function will create a new date in expected output format;
     example: MM/DD/YYYY to YYYY-MM-DD'''
-    if not ''.join(date).strip():
-        return None
+    if not ''.join(date).strip():   # detect empty 'date' format and write to stderr
+        sys.stderr.write('STDERR: Date not found.\n')
+        return 'XXXX-XX-XX'
 
     else:
         new_date = date.split('/')
@@ -43,8 +44,8 @@ def calculate_clicks(impress, CTR):
             a = float(CTR[:-1])
             b = float(impress)
             clicks = b * (a/100)
-            return round(clicks
-                         )
+            return round(clicks)
+
         except ValueError as error:
-            print(error)
+            sys.stderr.write('STDERR: Error calculating clicks, {}\n'.format(error))
             return None

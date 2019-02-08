@@ -22,9 +22,8 @@ import chardet      #TODO: requirements: chardet-3.0.4
 from functions import date_change, get_country_code, calculate_clicks
 
 
-'''Check the inpit folder. If folder is empty,
-or if the only file is DS_Store:
-write proper error into Stderr.'''
+'''Check the input folder. If folder is empty,
+or if the only file is DS_Store: write proper error into Stderr.'''
 
 
 input_DIR = 'input'
@@ -54,8 +53,8 @@ else:       # search for .csv file in 'Input' folder
             break
 
 
-'''Detect if the .csv file encoding is utf-8 or other
-if file is encoded in other encoding e.g utf-16
+'''Detect if the .csv file encoding is utf-8 or other.
+If file is encoded in other encoding e.g utf-16
 write proper error into Stderr '''
 
 
