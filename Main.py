@@ -54,8 +54,9 @@ else:
 
 
 '''Detect if the .csv file encoding is utf-8 or other.
-If file is encoded in other encoding e.g utf-16 then
-write proper error into Stderr '''
+If file is encoded in other encoding, e.g utf-16 then
+write proper error into Stderr.
+Detect if the input file is empty file.'''
 
 
 print('Detecting {} file encoding.'.format(input_path))
@@ -69,7 +70,8 @@ if encoding['encoding'] == 'utf-8':
     pass
 
 else:
-    sys.stderr.write('STDERR: Critical error. This script supports only utf-8 encoded files')
+    sys.stderr.write('STDERR: Critical error. Input file empty or not encoded '
+                     'in UTF-8 encoding. This script supports only utf-8 encoding.\n')
     sys.exit()
 
 
