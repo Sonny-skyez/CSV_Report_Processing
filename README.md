@@ -14,3 +14,11 @@ Example output lines:
     2019-01-21,GIN,883,3
     2019-01-22,DEU,139,1
 ```
+## Installation
+
+Use package manager [pip](https://pypi.org/project/pip/) to install required Python packages:
+
+```
+    pip install chardet
+    pip install pycountry
+```
