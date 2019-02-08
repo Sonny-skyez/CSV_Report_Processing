@@ -3,7 +3,7 @@
 '''CSV Report Processing
 
 This script is intended to read CSV input file from current working
-directory and writeproper report file aggregated by date
+directory and write proper report file aggregated by date
 and country code.
 
 Example input line:
