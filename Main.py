@@ -30,6 +30,7 @@ If found nothing: wrote proper error to Stderr.'''
 list_DIR = os.listdir('.')    # list files in CWD
 input_path = ''
 
+
 print('Searching for a .csv input file in current directory.')
 
 
@@ -61,6 +62,7 @@ Detect if the input file is empty file.'''
 
 print('Detecting {} file encoding.'.format(input_path))
 
+
 raw_data = open(input_path, 'rb').read()
 encoding = chardet.detect(raw_data)
 
@@ -82,9 +84,10 @@ List rows lexicographically in "input_Rows" list'''
 
 print('Opening .csv file and modifying line by line...')
 
+
 input_Rows = []
 
-input_CSV = open(input_path, newline='')
+input_CSV = open(input_path, newline='', encoding='utf-8')
 input_Reader = csv.reader(input_CSV)
 
 
