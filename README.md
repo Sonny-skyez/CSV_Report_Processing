@@ -32,7 +32,7 @@ Use package manager [pip](https://pypi.org/project/pip/) to install required Pyt
 
 To use this script you need to:
 
-- copy input *.csv* file to a script working directory, input format should be:
+- copy input *.csv* file to a script working directory, file format should be:
 
 ![](https://i.ibb.co/dfmxg1w/Zrzut-ekranu-2019-02-08-o-16-33-17.png)
 
