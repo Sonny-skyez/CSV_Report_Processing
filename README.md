@@ -16,13 +16,13 @@ Example output lines:
 ```
 ## Installation
 
-Clone this repository to your computer using link:
+- Clone this repository to your computer using link:
 
 ```
     https://github.com/Sonny-skyez/CSV_Report_Processing.git
 ```
 
-Use package manager [pip](https://pypi.org/project/pip/) to install required Python packages:
+- Use package manager [pip](https://pypi.org/project/pip/) to install required Python packages:
 
 ```
     pip install chardet
@@ -77,6 +77,10 @@ To use this script you need to:
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+## Author
+
+**Krzysztof Brymer** - script author [GitHub profile](https://github.com/Sonny-skyez)
 
 ## License
 
