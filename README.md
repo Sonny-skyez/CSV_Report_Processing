@@ -28,3 +28,6 @@ Use package manager [pip](https://pypi.org/project/pip/) to install required Pyt
     pip install chardet
     pip install pycountry
 ```
+## Usage
+
+To use this script run [Main.py](https://github.com/Sonny-skyez/CSV_Report_Processing/blob/master/Main.py) with Python interpreter.
