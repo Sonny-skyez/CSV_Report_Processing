@@ -72,6 +72,7 @@ To use this script you need to:
 ## Built With
 
 [Pycharm](https://www.jetbrains.com/pycharm/) - Python IDE for developers
+[Sublime Text](https://www.sublimetext.com/) - .csv files editor and encoder
 
 ## Contributing
 
