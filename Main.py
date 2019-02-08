@@ -5,14 +5,14 @@ import chardet      #TODO: requirements: chardet-3.0.4
 from functions import date_change,calculate_clicks, get_country_code
 
 
+'''
+check if the 'Input' folder is empty
+and is it containing hidden .DS_Store files
+'''
+
 input_DIR = 'input'
 list_DIR = os.listdir(input_DIR)
 
-
-'''
-check if the 'Input' folder is empty
-and is it containing hidden .DS_store files
-'''
 
 if len(list_DIR) == 0 or (len(list_DIR) == 1 and '.DS_Store' in list_DIR):
 
@@ -62,6 +62,8 @@ input_Reader = csv.reader(input_CSV)
 try:
     for row in input_Reader:
 
+        #TODO handle empty rows in file
+
         row[0] = date_change(row[0])    # call 'date_change' function, modify 0 column
         row[1] = get_country_code(row[1])   # call 'get_country_code' function, modify 1 column
         row[3] = calculate_clicks(row[2],row[3])     # call 'calculate_clicks' function, modify 3 column
@@ -70,8 +72,25 @@ try:
 except csv.Error as error:
     sys.stderr.write('file {}, line {}: {}'.format(input_path, reader.line_num, error))
 
+input_CSV.close()   # close file
+
+'''
+sort lexicographically rows in input_Rows list and
+write output.csv file using csv writer from Python standard library,
+use liniterminator to create Unix line endings
+'''
 
 input_Rows.sort()   # sort rows lexicographically
 
+output_DIR = 'Output'
+output_path = os.path.join((output_DIR), 'output.csv')
+
+output_CSV = open(output_path, 'w', newline='')    # create output file
+output_Writer = csv.writer(output_CSV, lineterminator='\n')     # make unix line endings
+
+# iterate trough input_Rows modified list
 for row in input_Rows:
-    print(row)
+
+    output_Writer.writerow(row)
+
+output_CSV.close()
