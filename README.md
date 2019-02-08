@@ -62,3 +62,9 @@ To use this script you need to:
 2019-01-24,XXX,1082,7
 2019-01-24,XXX,586,5
 ```
+- if there was no critical errors this message will appear:
+```
+********************************* Writing output file is complete **********************************
+********************************** Thank you for using my script! **********************************
+***************************************** Author *****************************************
+```
