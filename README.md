@@ -32,6 +32,8 @@ Use package manager [pip](https://pypi.org/project/pip/) to install required Pyt
 
 To use this script you need to:
 
-- copy input .csv file to scripts working directory
+- copy input *.csv* file to a script working directory
 
-run [Main.py](https://github.com/Sonny-skyez/CSV_Report_Processing/blob/master/Main.py) with Python interpreter.
+- run [Main.py](https://github.com/Sonny-skyez/CSV_Report_Processing/blob/master/Main.py) with Python interpreter.
+
+-
