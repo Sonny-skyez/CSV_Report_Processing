@@ -65,7 +65,7 @@ raw_data = open(input_path, 'rb').read()
 encoding = chardet.detect(raw_data)
 
 
-if encoding['encoding'] == 'utf-8':
+if encoding['encoding'] == 'utf-8' or encoding['encoding'] == 'ascii':
     print('Detection succeeded. File encoding format is {}.'.format(encoding['encoding']))
     pass
 
