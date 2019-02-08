@@ -68,6 +68,11 @@ To use this script you need to:
 ********************************** Thank you for using my script! **********************************
 ******************************************** Author ************************************************
 ```
+
+## Built With
+
+[Pycharm](https://www.jetbrains.com/pycharm/) - Python IDE for developers
+
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
