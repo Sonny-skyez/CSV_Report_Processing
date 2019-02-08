@@ -18,39 +18,37 @@ Author:     Krzysztof Brymer'''
 
 
 import os, sys, csv
-import chardet      #TODO: requirements: chardet-3.0.4
+import chardet
 from functions import date_change, get_country_code, calculate_clicks
 
 
-'''Check the input folder. If folder is empty,
-or if the only file is DS_Store: write proper error into Stderr.'''
+'''Search in current working folder for .csv file.
+If found nothing: wrote proper error to Stderr.'''
 
 
-input_DIR = 'input'
-list_DIR = os.listdir(input_DIR)    # list files from 'input' folder
+list_DIR = os.listdir('.')    # list files in CWD
+input_path = ''
 
+print('Searching for a .csv input file in current folder.')
 
-if len(list_DIR) == 0 or (len(list_DIR) == 1 and '.DS_Store' in list_DIR):
+for search_file in list_DIR:
 
-    sys.stderr.write('STDERR: Critical error occured. No .csv file was found in "Input" folder,\n'
-                     'copy input file in .csv format to this folder and try again.')
+    if not search_file.endswith('.csv'):
+        continue    # skip, if it's different file type
+
+    elif search_file.endswith('.csv'):
+
+        print('{} file has been found.'.format(search_file))
+        input_path = search_file
+        break
+
+if len(input_path) == 0:
+    sys.stderr.write('STDERR: Critical error. No .csv file was found in working directory.\n'
+                     'Copy input file in .csv format to this folder and try again.\n')
     sys.exit()
 
-
-else:       # search for .csv file in 'Input' folder
-
-    print('Searching for a .csv input file in "Input" folder.')
-
-    for search_file in list_DIR:
-
-        if not search_file.endswith('.csv'):
-            continue    # skip, if it's different file type
-
-        else:
-
-            print('{} file has been found.'.format(search_file))
-            input_path = os.path.join(input_DIR, search_file)
-            break
+else:
+    pass
 
 
 '''Detect if the .csv file encoding is utf-8 or other.

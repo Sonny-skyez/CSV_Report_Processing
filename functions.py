@@ -1,6 +1,6 @@
 # file with functions used in Main.py
 
-import pycountry, sys   #TODO: requirements
+import pycountry, sys
 
 
 def date_change(date):
