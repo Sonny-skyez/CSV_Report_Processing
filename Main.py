@@ -73,9 +73,9 @@ else:
     sys.exit()
 
 
-'''Read .csv file with csv reader from standard Python module
+'''Read .csv file with csv reader from standard Python module,
 make changes in rows to match output standard: 2019-01-21,AFG,919,6
-list rows in "input_Rows" list'''
+List rows lexicographically in "input_Rows" list'''
 
 
 print('Opening .csv file and modifying line by line...')
