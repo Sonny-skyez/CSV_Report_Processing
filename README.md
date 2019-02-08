@@ -34,7 +34,7 @@ To use this script you need to:
 
 - copy input *.csv* file to a script working directory
 
-!(https://i.ibb.co/dfmxg1w/Zrzut-ekranu-2019-02-08-o-16-33-17.png)
+![](https://i.ibb.co/dfmxg1w/Zrzut-ekranu-2019-02-08-o-16-33-17.png)
 
 
 - run [Main.py](https://github.com/Sonny-skyez/CSV_Report_Processing/blob/master/Main.py) with Python interpreter.
