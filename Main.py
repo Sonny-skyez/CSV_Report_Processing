@@ -1,14 +1,31 @@
 #!/usr/bin/env python
 
+'''CSV Report Processing
+
+This script is intended to read CSV input file and write
+proper report file aggregated by date and country code.
+
+Example input:
+
+    01/21/2019,Mandiana,883,0.38%
+
+Example output:
+
+    2019-01-21,GIN,883,3
+
+Scripts supports UTF-8 encoded .csv files (without BOM).
+Author:     Krzysztof Brymer'''
+
+
 import os, sys, csv
 import chardet      #TODO: requirements: chardet-3.0.4
-from functions import date_change,calculate_clicks, get_country_code
+from functions import date_change, calculate_clicks, get_country_code
 
 
-'''
-check if the 'Input' folder is empty
-and is it containing hidden .DS_Store files
-'''
+'''Check the inpit folder. If folder is empty,
+or if the only file is DS_Store:
+write proper error into Stderr.'''
+
 
 input_DIR = 'input'
 list_DIR = os.listdir(input_DIR)
@@ -37,7 +54,9 @@ else:       # search for .csv file in 'Input' folder
             break
 
 
-# detect if the .csv file encoding is utf-8 or other
+'''Detect if the .csv file encoding is utf-8 or other
+if file is encoded in other encoding e.g utf-16
+write proper error into Stderr '''
 
 print('Detecting {} file encoding.'.format(search_file))
 
@@ -54,11 +73,10 @@ else:
     sys.exit()
 
 
-'''
-Read .csv file with csv reader from standard Python module
+'''Read .csv file with csv reader from standard Python module
 make changes in rows to match output standard: 2019-01-21,AFG,919,6
-list rows in "input_Rows" list
-'''
+list rows in "input_Rows" list'''
+
 
 print('Opening .csv file and modifying line by line...')
 
@@ -66,6 +84,7 @@ input_Rows = []
 
 input_CSV = open(input_path, newline='')
 input_Reader = csv.reader(input_CSV)
+
 
 try:
     for row in input_Reader:
@@ -89,11 +108,10 @@ input_CSV.close()   # close input file
 print('Reading and modification of .csv file is complete.')
 
 
-'''
-sort lexicographically rows in input_Rows list and
+'''Sort lexicographically rows in input_Rows list and
 write output.csv file using csv writer from Python standard library,
-use liniterminator to create Unix line endings
-'''
+use liniterminator to create Unix line endings.'''
+
 
 input_Rows.sort()   # sort rows lexicographically
 
@@ -105,6 +123,7 @@ print('Create {} file.\n'.format(output_path))
 output_CSV = open(output_path, 'w', newline='', encoding='utf-8')    # create output file in utf-8 encoding
 output_Writer = csv.writer(output_CSV, lineterminator='\n')     # make unix line endings
 
+
 # iterate trough input_Rows modified list
 for row in input_Rows:
 
@@ -112,8 +131,8 @@ for row in input_Rows:
 
 output_CSV.close()  # close output file
 
-# script end, credits
 
+# script end, credits
 print(' Writing output file is complete '.center(100, '*'))
 print(' Thank you for using my script! '.center(100, '*'))
 print(' Krzysztof Brymer '.center(100, '*'))
