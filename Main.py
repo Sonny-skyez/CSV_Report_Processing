@@ -102,7 +102,7 @@ output_path = os.path.join((output_DIR), 'output.csv')
 
 print('Create {} file.\n'.format(output_path))
 
-output_CSV = open(output_path, 'w', newline='')    # create output file
+output_CSV = open(output_path, 'w', newline='', encoding='utf-8')    # create output file in utf-8 encoding
 output_Writer = csv.writer(output_CSV, lineterminator='\n')     # make unix line endings
 
 # iterate trough input_Rows modified list
