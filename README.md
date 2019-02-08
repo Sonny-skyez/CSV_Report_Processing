@@ -16,6 +16,12 @@ Example output lines:
 ```
 ## Installation
 
+Clone this repository to your computer using link:
+
+```
+    https://github.com/Sonny-skyez/CSV_Report_Processing.git
+```
+
 Use package manager [pip](https://pypi.org/project/pip/) to install required Python packages:
 
 ```
