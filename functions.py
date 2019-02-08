@@ -33,7 +33,7 @@ def get_country_code(name):
 
     # detect empty 'impress' parameter.
     if not ''.join(name).strip():
-        sys.stderr.write('STDERR: Error: subdivision field is empty.\n')
+        sys.stderr.write('STDERR: Error: subdivision name field is empty.\n')
         return 'XXX'
 
     else:
