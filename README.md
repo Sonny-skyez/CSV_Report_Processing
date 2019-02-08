@@ -30,4 +30,8 @@ Use package manager [pip](https://pypi.org/project/pip/) to install required Pyt
 ```
 ## Usage
 
-To use this script run [Main.py](https://github.com/Sonny-skyez/CSV_Report_Processing/blob/master/Main.py) with Python interpreter.
+To use this script you need to:
+
+- copy input .csv file to scripts working directory
+
+run [Main.py](https://github.com/Sonny-skyez/CSV_Report_Processing/blob/master/Main.py) with Python interpreter.
