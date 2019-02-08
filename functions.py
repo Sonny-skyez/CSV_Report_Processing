@@ -31,7 +31,7 @@ def get_country_code(name):
 
     Example: Berlin to DEU'''
 
-    # detect empty 'impress' parameter.
+    # detect empty 'name' parameter.
     if not ''.join(name).strip():
         sys.stderr.write('STDERR: Error: subdivision name field is empty.\n')
         return 'XXX'

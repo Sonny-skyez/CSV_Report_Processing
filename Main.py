@@ -2,8 +2,9 @@
 
 '''CSV Report Processing
 
-This script is intended to read CSV input file and write
-proper report file aggregated by date and country code.
+This script is intended to read CSV input file from current working
+directory and writeproper report file aggregated by date
+and country code.
 
 Example input line:
 
@@ -13,7 +14,7 @@ Example output line:
 
     2019-01-21,GIN,883,3
 
-Scripts supports UTF-8 encoded .csv files (without BOM).
+Scripts supports only UTF-8 encoded .csv files (without BOM).
 Author:     Krzysztof Brymer'''
 
 
@@ -22,14 +23,15 @@ import chardet
 from functions import date_change, get_country_code, calculate_clicks
 
 
-'''Search in current working folder for .csv file.
+'''Search in current working directory for .csv file.
 If found nothing: wrote proper error to Stderr.'''
 
 
 list_DIR = os.listdir('.')    # list files in CWD
 input_path = ''
 
-print('Searching for a .csv input file in current folder.')
+print('Searching for a .csv input file in current directory.')
+
 
 for search_file in list_DIR:
 
@@ -44,7 +46,7 @@ for search_file in list_DIR:
 
 if len(input_path) == 0:
     sys.stderr.write('STDERR: Critical error. No .csv file was found in working directory.\n'
-                     'Copy input file in .csv format to this folder and try again.\n')
+                     'Copy input file in .csv format to this directory and try again.\n')
     sys.exit()
 
 else:
@@ -52,11 +54,11 @@ else:
 
 
 '''Detect if the .csv file encoding is utf-8 or other.
-If file is encoded in other encoding e.g utf-16
+If file is encoded in other encoding e.g utf-16 then
 write proper error into Stderr '''
 
 
-print('Detecting {} file encoding.'.format(search_file))
+print('Detecting {} file encoding.'.format(input_path))
 
 raw_data = open(input_path, 'rb').read()
 encoding = chardet.detect(raw_data)
@@ -109,15 +111,21 @@ print('Reading and modification of .csv file is complete.')
 
 '''Sort lexicographically rows in input_Rows list and
 write output.csv file using csv writer from Python standard library,
-use liniterminator to create Unix line endings.'''
+use lineterminator to create Unix line endings.'''
 
 
 input_Rows.sort()   # sort rows lexicographically
 
-output_DIR = 'Output'
+
+# create 'output' dir in CWD and create file path
+
+output_DIR = 'output'
+os.makedirs(output_DIR, exist_ok=True)
 output_path = os.path.join((output_DIR), 'output.csv')
 
+
 print('Create {} file.\n'.format(output_path))
+
 
 output_CSV = open(output_path, 'w', newline='', encoding='utf-8')    # create output file in utf-8 encoding
 output_Writer = csv.writer(output_CSV, lineterminator='\n')     # make unix line endings
