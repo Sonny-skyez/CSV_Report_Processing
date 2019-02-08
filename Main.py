@@ -5,11 +5,11 @@
 This script is intended to read CSV input file and write
 proper report file aggregated by date and country code.
 
-Example input:
+Example input line:
 
     01/21/2019,Mandiana,883,0.38%
 
-Example output:
+Example output line:
 
     2019-01-21,GIN,883,3
 
@@ -19,7 +19,7 @@ Author:     Krzysztof Brymer'''
 
 import os, sys, csv
 import chardet      #TODO: requirements: chardet-3.0.4
-from functions import date_change, calculate_clicks, get_country_code
+from functions import date_change, get_country_code, calculate_clicks
 
 
 '''Check the inpit folder. If folder is empty,
@@ -28,7 +28,7 @@ write proper error into Stderr.'''
 
 
 input_DIR = 'input'
-list_DIR = os.listdir(input_DIR)
+list_DIR = os.listdir(input_DIR)    # list files from 'input' folder
 
 
 if len(list_DIR) == 0 or (len(list_DIR) == 1 and '.DS_Store' in list_DIR):
@@ -57,6 +57,7 @@ else:       # search for .csv file in 'Input' folder
 '''Detect if the .csv file encoding is utf-8 or other
 if file is encoded in other encoding e.g utf-16
 write proper error into Stderr '''
+
 
 print('Detecting {} file encoding.'.format(search_file))
 
@@ -105,6 +106,7 @@ except csv.Error as error:
 
 input_CSV.close()   # close input file
 
+
 print('Reading and modification of .csv file is complete.')
 
 
@@ -132,7 +134,7 @@ for row in input_Rows:
 output_CSV.close()  # close output file
 
 
-# script end, credits
+# End credits
 print(' Writing output file is complete '.center(100, '*'))
 print(' Thank you for using my script! '.center(100, '*'))
 print(' Krzysztof Brymer '.center(100, '*'))
