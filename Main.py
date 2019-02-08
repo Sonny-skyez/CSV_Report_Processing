@@ -2,7 +2,7 @@
 
 import os, sys, csv
 import chardet      #TODO: requirements: chardet-3.0.4
-from functions import date_change, calculate_clicks
+from functions import date_change,calculate_clicks, get_country_code
 
 
 input_DIR = 'input'
@@ -21,12 +21,12 @@ if len(list_DIR) == 0 or (len(list_DIR) == 1 and '.DS_Store' in list_DIR):
     sys.exit()
 
 
-else:       # search for a .csv file in 'Input' folder
+else:       # search for .csv file in 'Input' folder
 
     for search_file in list_DIR:
 
         if not search_file.endswith('.csv'):
-            continue
+            continue    # skip, if it's different file type
 
         else:
 
@@ -49,13 +49,12 @@ else:
 
 
 '''
-Read .csv file with csv Python module
+Read .csv file with csv reader from standard Python module
 make changes in rows to match output standard: 2019-01-21,AFG,919,6
 list rows in "input_Rows" list
 '''
 
 input_Rows = []
-
 
 input_CSV = open(input_path, newline='')
 input_Reader = csv.reader(input_CSV)
@@ -63,15 +62,16 @@ input_Reader = csv.reader(input_CSV)
 try:
     for row in input_Reader:
 
-        row[0] = date_change(row[0])    #call 'date_change' function
-
-        #TODO: change names of states into shortcuts
-
-        row[3] = calculate_clicks(row[2],row[3])     #call 'calculate_clicks' function
-        input_Rows.append(row)
-        print(row)
+        row[0] = date_change(row[0])    # call 'date_change' function, modify 0 column
+        row[1] = get_country_code(row[1])   # call 'get_country_code' function, modify 1 column
+        row[3] = calculate_clicks(row[2],row[3])     # call 'calculate_clicks' function, modify 3 column
+        input_Rows.append(row)      # append modified row into list
 
 except csv.Error as error:
-    sys.exit('file {}, line {}: {}'.format(input_path, reader.line_num, error))
+    sys.stderr.write('file {}, line {}: {}'.format(input_path, reader.line_num, error))
 
-#TODO sort here! ---> input_Rows.sort()
+
+input_Rows.sort()   # sort rows lexicographically
+
+for row in input_Rows:
+    print(row)

@@ -1,5 +1,7 @@
 # file with functions used in Main.py
 
+import pycountry    #TODO: requirements
+
 
 def date_change(date):
 
@@ -20,4 +22,17 @@ def calculate_clicks(impress, CTR):
     b = float(impress)
     clicks = b * (a/100)
 
-    return round(clicks, 2)
+    return round(clicks)
+
+
+def get_country_code(name):
+
+    # this function is searching for aplha_3 country code (DEU, POL, GIN)
+    # by using name of subdivision as a parameter
+    for subdiv in list(pycountry.subdivisions):
+        if name in subdiv.name:
+            code = subdiv.country_code      # this code is also alpha_2 code of a country
+            country = pycountry.countries.get(alpha_2 = code)
+            return country.alpha_3
+
+    return 'XXX'    # if function didn't find nothing, return 'XXX'
