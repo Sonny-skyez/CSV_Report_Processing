@@ -60,9 +60,20 @@ def impress_check(impress):
 
     Example: Unknown to 0'''
 
-    if
+    # detect empty impress field
+    if not impress:
+        sys.stderr.write('STDERR: Error: impressions field is empty.\n')
 
+        return '0'
 
+    # detect invalid parameter type
+    elif type(impress) == 'str':
+        sys.stderr.write('STDERR: Error: impressions field format invalid.\n')
+
+        return '0'
+
+    else:
+        return impress
 
 
 def calculate_clicks(impress, CTR):
@@ -72,10 +83,9 @@ def calculate_clicks(impress, CTR):
 
      Example: 916, 0.67% to 6'''
 
-    # detect empty 'impress' parameter.
+    # detect empty 'CTR' parameter.
     if not impress or not CTR:
-        sys.stderr.write('STDERR: Error: impressions or CTR field is empty.\n'
-                         'Can\'t calculate clicks.\n')
+        sys.stderr.write('STDERR: Error: CTR field is empty. Can\'t calculate clicks.\n')
 
         return '0'
 

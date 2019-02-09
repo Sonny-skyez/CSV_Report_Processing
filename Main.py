@@ -20,7 +20,7 @@ Author:     Krzysztof Brymer'''
 
 import os, sys, csv
 import chardet
-from functions import date_change, get_country_code, calculate_clicks
+from functions import date_change, get_country_code,impress_check, calculate_clicks
 
 
 '''Search in current working directory for .csv file.
