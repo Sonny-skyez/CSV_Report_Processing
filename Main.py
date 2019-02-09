@@ -68,7 +68,7 @@ encoding = chardet.detect(raw_data)
 
 
 if encoding['encoding'] == 'utf-8' or encoding['encoding'] == 'ascii':
-    print('Detection succeeded. File encoding format is {}.'.format(encoding['encoding']))
+    print('Detection succeeded. File encoding format is valid')
     pass
 
 else:
@@ -82,7 +82,7 @@ make changes in rows to match output standard: 2019-01-21,AFG,919,6
 List rows lexicographically in "input_Rows" list'''
 
 
-print('Opening .csv file and modifying line by line...')
+print('Opening .csv file and modifying it line by line.')
 
 
 input_Rows = []
@@ -92,9 +92,10 @@ input_Reader = csv.reader(input_CSV)
 
 
 try:
+
     for row in input_Reader:
 
-        if not ''.join(row).strip():    # handle empty lines errors
+        if not row:    # handle empty lines errors
             sys.stderr.write('STDERR: empty row, script will continue running.\n')
             continue
 
@@ -105,7 +106,9 @@ try:
             input_Rows.append(row)      # append modified row into list
 
 except csv.Error as error:
-    sys.stderr.write('file {}, line {}: {}'.format(input_path, input_Reader.line_num, error))
+    sys.stderr.write('STDERR: File {}, line {}: {}. This script supports only UTF-8 encoding.\n'
+                     'Output file can\'t be created.\n'.format(input_path, input_Reader.line_num, error))
+    sys.exit()
 
 
 input_CSV.close()   # close input file
