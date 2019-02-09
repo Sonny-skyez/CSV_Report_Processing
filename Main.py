@@ -101,8 +101,9 @@ try:
 
         else:
             row[0] = date_change(row[0])    # call 'date_change' function, modify 0 column
-            row[1] = get_country_code(row[1])   # call 'get_country_code' function, modify 1 column
-            row[3] = calculate_clicks(row[2],row[3])     # call 'calculate_clicks' function, modify 3 column
+            row[1] = get_country_code(row[1])   # call 'get_country_code' function, modify 1st column
+            row[2] = impress_check(row[2])      # call 'impress_check' function, modity 2nd column
+            row[3] = calculate_clicks(row[2],row[3])     # call 'calculate_clicks' function, modify 3rd column
             input_Rows.append(row)      # append modified row into list
 
 except csv.Error as error:
