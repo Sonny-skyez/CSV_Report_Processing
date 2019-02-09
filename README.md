@@ -16,13 +16,13 @@ Example output lines:
 ```
 ## Installation
 
-Clone this repository to your computer using link:
+- Clone this repository to your computer using link:
 
 ```
     https://github.com/Sonny-skyez/CSV_Report_Processing.git
 ```
 
-Use package manager [pip](https://pypi.org/project/pip/) to install required Python packages:
+- Use package manager [pip](https://pypi.org/project/pip/) to install required Python packages:
 
 ```
     pip install chardet
@@ -48,4 +48,40 @@ To use this script you need to:
 ```
 - run [Main.py](https://github.com/Sonny-skyez/CSV_Report_Processing/blob/master/Main.py) with Python interpreter.
 
--
+- output.csv will be created in 'Output' directory in this format:
+```
+2019-01-21,GIN,76,1
+2019-01-21,GIN,883,3
+2019-01-22,CZE,139,1
+2019-01-22,GIN,1050,10
+2019-01-22,GIN,201,2
+2019-01-23,GIN,521,1
+2019-01-23,GIN,72,1
+2019-01-23,XXX,777,2
+2019-01-24,CZE,620,1
+2019-01-24,XXX,1082,7
+2019-01-24,XXX,586,5
+```
+- if there was no critical errors this message will appear:
+```
+********************************* Writing output file is complete **********************************
+********************************** Thank you for using my script! **********************************
+******************************************** Author ************************************************
+```
+
+## Built With
+
+- [Pycharm](https://www.jetbrains.com/pycharm/) - Python IDE for developers
+- [Sublime Text](https://www.sublimetext.com/) - .csv files editor and encoder
+
+## Contributing
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+## Author
+
+**Krzysztof Brymer** - script author [GitHub profile](https://github.com/Sonny-skyez)
+
+## License
+
+[MIT License](https://choosealicense.com/licenses/mit/)
