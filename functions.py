@@ -4,23 +4,20 @@ import pycountry, sys
 
 
 def date_change(date):
-
     '''This function creates a new date in expected output format
     and detects errors in given "date" parameter.
 
     Example: MM/DD/YYYY to YYYY-MM-DD'''
-
     # detect empty 'date' parameter
     if not date:
         sys.stderr.write('STDERR: Date not found. Script will continue.\n')
 
         return 'XXXX-XX-XX'
-
     # detect date format
     elif len(date) != 10:
         sys.stderr.write('STDERR: Date format invalid. Script will continue.\n')
+        
         return 'XXXX-XX-XX'
-
     # change date format
     else:
         new_date = date.split('/')
@@ -31,17 +28,15 @@ def date_change(date):
 
 
 def get_country_code(name):
-
     '''This function searches for aplha_3 country code (DEU, POL, GIN)
     by using name of subdivision as a parameter, and detects errors.
 
     Example: Berlin to DEU'''
-
     # detect empty 'name' parameter.
     if not name:
         sys.stderr.write('STDERR: Error: subdivision name field is empty.\n')
+        
         return 'XXX'
-
     # search for country code
     else:
         for subdiv in list(pycountry.subdivisions):     # iterate trough subdivision list
@@ -54,41 +49,34 @@ def get_country_code(name):
 
 
 def impress_check(impress):
-
     '''This function checks impressions column format
     for errors and invalid formats.
 
     Example: Unknown to 0'''
-
     # detect empty impress field
     if not impress:
         sys.stderr.write('STDERR: Error: impressions field is empty.\n')
 
         return '0'
-
     # detect invalid parameter type
     elif type(impress) == 'str':
         sys.stderr.write('STDERR: Error: impressions field format invalid.\n')
 
         return '0'
-
     else:
         return impress
 
 
 def calculate_clicks(impress, CTR):
-
     '''This function calculate number of clicks from CTR (Click To
      impression Rate) and number of impressions. Also detects errors.
 
      Example: 916, 0.67% to 6'''
-
     # detect empty 'CTR' parameter.
     if not impress or not CTR:
         sys.stderr.write('STDERR: Error: CTR field is empty. Can\'t calculate clicks.\n')
 
         return '0'
-
     # calculate clicks
     else:
         try:
@@ -97,7 +85,6 @@ def calculate_clicks(impress, CTR):
             clicks = b * (a/100)
 
             return round(clicks)
-
         except ValueError as error:
             sys.stderr.write('STDERR: Error calculating clicks, {}\n'.format(error))
 
